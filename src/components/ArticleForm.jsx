@@ -10,7 +10,7 @@ export default function ArticleForm({ onArticleAdded }) {
         deskripsi: '',
         isi: '',
         gambar: null,
-        penulis: ''
+        penulis: 'Harsoyo, S.IP, SH.' // Nilai default diubah di sini
     })
     const [isUploading, setIsUploading] = useState(false)
     const [previewImage, setPreviewImage] = useState(null)
@@ -126,7 +126,7 @@ export default function ArticleForm({ onArticleAdded }) {
                 gambar_url: imageUrl || null,
                 tanggal_upload: indonesiaTime.date,
                 jam_upload: indonesiaTime.time,
-                penulis: formData.penulis || 'DR. Jaenudin Umar, SE, SH. M.Kn'
+                penulis: formData.penulis || 'Harsoyo, S.IP, SH.' // Nilai fallback diubah di sini
             }
 
             if (!articleData.judul || !articleData.deskripsi || !articleData.isi) {
@@ -149,7 +149,7 @@ export default function ArticleForm({ onArticleAdded }) {
                 deskripsi: '',
                 isi: '',
                 gambar: null,
-                penulis: ''
+                penulis: 'Harsoyo, S.IP, SH.' // Nilai default direset juga
             })
             setPreviewImage(null)
 
@@ -196,7 +196,7 @@ export default function ArticleForm({ onArticleAdded }) {
                     value={formData.penulis}
                     onChange={handleChange}
                     className="w-full px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                    placeholder="DR. Jaenudin Umar, SE, SH. M.Kn - Notaris Cirebon"
+                    placeholder="Harsoyo, S.IP, SH." // Placeholder juga diubah
                 />
             </div>
 
