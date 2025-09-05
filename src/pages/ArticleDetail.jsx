@@ -164,8 +164,8 @@ export default function ArticleDetail() {
                         <h3 className="text-xl font-semibold text-white mb-4">Tentang Penulis</h3>
                         <p className="text-gray-300">
                             Artikel ini ditulis oleh <strong>Harsoyo, S.IP, SH., MKn</strong>, Notaris dan PPAT berlisensi
-                            yang berkantor di Tegal, Jawa Tengah. Dengan pengalaman lebih dari 2 tahun, beliau melayani
-                            berbagai kebutuhan hukum termasuk jasa notaris, ppat, pengurusan sertifikat tanah, dan konsultasi
+                            yang berkantor di Tegal, Jawa Tengah. Sejak tahun 2023, beliau telah melayani
+                            berbagai kebutuhan hukum termasuk jasa notaris, PPAT, pengurusan sertifikat tanah, dan konsultasi
                             hukum untuk masyarakat Tegal dan sekitarnya.
                         </p>
                         <p className="text-gray-300 mt-2">

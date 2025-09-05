@@ -107,7 +107,6 @@ export default function Articles() {
                     </div>
                 )}
 
-                {/* Informasi tambahan untuk SEO */}
                 <div className="mt-12 p-6 bg-gray-800 rounded-lg">
                     <h2 className="text-2xl font-bold text-white mb-4">Notaris dan PPAT Profesional di Tegal</h2>
                     <p className="text-gray-300 mb-4">
