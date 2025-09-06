@@ -373,7 +373,7 @@ export const ContactSection = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-white mb-1">Jam Kerja Notaris Tegal</h4>
-                                    <p className="text-gray-300">Senin-Kamis: 09.00 - 17.00 WIB</p>
+                                    <p className="text-gray-300">Senin-Jum'at: 08.30 - 16.00 WIB</p>
                                     <p className="text-gray-400 text-sm mt-1">Melayani jasa notaris dan ppat selama jam kerja</p>
                                 </div>
                             </div>

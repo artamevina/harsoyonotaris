@@ -29,7 +29,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="text-gray-400">Telepon: 085742419333</li>
               <li className="text-gray-400">Email: harsoyo.notaris18@gmail.com</li>
-              <li className="text-gray-400">Jam Operasional: Senin-Kamis, 09:00-17:00</li>
+              <li className="text-gray-400">Jam Operasional: Senin-Jum'at, 08:00-16:00</li>
             </ul>
           </div>
         </div>
