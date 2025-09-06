@@ -288,6 +288,12 @@ export const galleryItems = [
         imageUrl: "https://res.cloudinary.com/du4wegspv/image/upload/f_auto,q_auto,w_800/v1756898406/WhatsApp_Image_2025-09-03_at_5.32.10_PM_2_vojzkz.jpg",
         title: "Tampak Samping Kantor",
         description: "Tampak samping kantor dengan desain modern dan ornamen dekoratif."
+    },
+    {
+        id: 6,
+        imageUrl: "https://res.cloudinary.com/du4wegspv/image/upload/f_auto,q_auto,w_800/v1757123327/WhatsApp_Image_2025-09-06_at_8.43.37_AM_csk0py.jpg",
+        title: "Ruang Pertemuan",
+        description: "Ruang pertemuan yang nyaman, ideal untuk diskusi dan konsultasi."
     }
 ];
 
