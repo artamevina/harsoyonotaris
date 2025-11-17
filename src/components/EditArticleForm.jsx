@@ -5,6 +5,15 @@ import { supabase } from '../services/supabase'
 import ReactQuill from 'react-quill-new'
 import 'react-quill-new/dist/quill.snow.css'
 import { SectionHeader } from './Template'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons'
+
+const createSlug = (judul) => {
+    return judul
+        .toLowerCase()
+        .replace(/[^\w ]+/g, '')
+        .replace(/ +/g, '-')
+}
 
 export default function EditArticleForm() {
     const { id } = useParams()
@@ -165,7 +174,7 @@ export default function EditArticleForm() {
                     deskripsi: formData.deskripsi,
                     isi: formData.isi,
                     gambar_url: imageUrl || null,
-                    penulis: formData.penulis || 'DR. Jaenudin Umar, SE, SH. M.Kn',
+                    penulis: formData.penulis || 'Harsoyo, S.IP, SH.',
                     tanggal_update: indonesiaTime.date,
                     jam_update: indonesiaTime.time
                 })
@@ -178,7 +187,8 @@ export default function EditArticleForm() {
                 throw new Error('Gagal memperbarui artikel')
             }
 
-            navigate(`/articles/${id}`, { state: { message: 'Artikel berhasil diperbarui' } })
+            const articleSlug = createSlug(formData.judul)
+            navigate(`/articles/${articleSlug}`, { state: { message: 'Artikel berhasil diperbarui' } })
 
         } catch (error) {
             console.error('Error updating article:', error)
@@ -226,7 +236,7 @@ export default function EditArticleForm() {
                         value={formData.penulis}
                         onChange={handleChange}
                         className="w-full px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                        placeholder="DR. Jaenudin Umar, SE, SH. M.Kn - Notaris Cirebon"
+                        placeholder="Harsoyo, S.IP, SH."
                     />
                 </div>
 
@@ -314,8 +324,9 @@ export default function EditArticleForm() {
                     <button
                         type="button"
                         onClick={() => navigate(-1)}
-                        className="px-4 py-2 bg-gray-700 text-gray-300 rounded-md hover:bg-gray-600 transition-colors"
+                        className="px-4 py-2 bg-gray-700 text-gray-300 rounded-md hover:bg-gray-600 transition-colors flex items-center gap-2"
                     >
+                        <FontAwesomeIcon icon={faTimes} className="h-4 w-4" />
                         Batal
                     </button>
                     <button
@@ -325,17 +336,12 @@ export default function EditArticleForm() {
                     >
                         {isUploading ? (
                             <>
-                                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                </svg>
+                                <FontAwesomeIcon icon={faSpinner} className="animate-spin h-5 w-5" />
                                 Menyimpan...
                             </>
                         ) : (
                             <>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                </svg>
+                                <FontAwesomeIcon icon={faCheck} className="h-5 w-5" />
                                 Simpan
                             </>
                         )}

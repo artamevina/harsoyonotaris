@@ -1,34 +1,48 @@
 import { Link } from "react-router-dom"
-import { 
-    sectionDataNotaris as sectionData, 
-    sectionDataPPAT, 
-    servicesData, 
-    aboutData, 
-    educationData, 
+import {
+    sectionDataNotaris as sectionData,
+    sectionDataPPAT,
+    servicesData,
+    aboutData,
+    educationData,
     sectionDataVision,
     galleryItems,
     organizationData
-} 
-from "../data";
-import { 
-    SectionHeader, 
-    LegalSection, 
-    AuthoritySection, 
-    ServiceCard, 
+}
+    from "../data";
+import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faMapMarkerAlt,
+    faPhoneAlt,
+    faEnvelope,
+    faClock,
+    faCalendar,
+    faUser,
+    faComments,
+    faQuestionCircle,
+    faScaleBalanced,
+    faEye,
+    faBullseye,
+    faHouseChimney
+} from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import {
+    SectionHeader,
+    LegalSection,
+    AuthoritySection,
+    ServiceCard,
     ProfileImage,
     ProfileDescription,
     SkillsSection,
     ExperienceSection,
     EducationCard,
     OrganizationCard,
-    TrainingCard,
-    BankCooperation,
     VisionCard,
     MissionCard,
     GalleryCard,
-} 
-from "./Template";
-import { useState } from "react";
+}
+    from "./Template";
 
 export const HeroSection = () => {
     return (
@@ -109,7 +123,7 @@ export const NotarisSection = () => {
 
                 <AuthoritySection
                     title="Kewenangan Notaris"
-                    icon="fa-scale-balanced"
+                    iconComponent={<FontAwesomeIcon icon={faScaleBalanced} className="text-gold-500" />}
                     categories={sectionData.authority.categories}
                     darkMode={true}
                 />
@@ -145,7 +159,7 @@ export const PPATSection = () => {
 
                 <AuthoritySection
                     title="Kewenangan PPAT"
-                    icon="fa-house-chimney"
+                    iconComponent={<FontAwesomeIcon icon={faHouseChimney} className="text-gold-500" />}
                     categories={sectionDataPPAT.authority.categories}
                     darkMode={true}
                 />
@@ -289,7 +303,7 @@ export const VisionSection = () => {
                 <div className="grid md:grid-cols-2 gap-8">
                     <VisionCard
                         title={sectionDataVision.vision.title}
-                        icon={sectionDataVision.vision.icon}
+                        iconComponent={<FontAwesomeIcon icon={faEye} className="text-white" />}
                         content={sectionDataVision.vision.content}
                         quote={sectionDataVision.vision.quote}
                         color={sectionDataVision.vision.color}
@@ -299,7 +313,7 @@ export const VisionSection = () => {
 
                     <MissionCard
                         title={sectionDataVision.mission.title}
-                        icon={sectionDataVision.mission.icon}
+                        iconComponent={<FontAwesomeIcon icon={faBullseye} className="text-white" />}
                         items={sectionDataVision.mission.items}
                         color={sectionDataVision.mission.color}
                         animation="fade-left"
@@ -328,7 +342,7 @@ export const ContactSection = () => {
                         <div className="space-y-6">
                             <div className="flex items-start">
                                 <div className="bg-gray-700 p-3 rounded-full mr-4 border border-gold-500">
-                                    <i className="fas fa-map-marker-alt text-gold-500"></i>
+                                    <FontAwesomeIcon icon={faMapMarkerAlt} className="text-gold-500 h-4 w-4" />
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-white mb-1">Alamat Kantor Notaris Tegal</h4>
@@ -341,7 +355,7 @@ export const ContactSection = () => {
 
                             <div className="flex items-start">
                                 <div className="bg-gray-700 p-3 rounded-full mr-4 border border-gold-500">
-                                    <i className="fas fa-phone-alt text-gold-500"></i>
+                                    <FontAwesomeIcon icon={faPhoneAlt} className="text-gold-500 h-4 w-4" />
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-white mb-1">Telepon Notaris Tegal</h4>
@@ -353,7 +367,7 @@ export const ContactSection = () => {
 
                             <div className="flex items-start">
                                 <div className="bg-gray-700 p-3 rounded-full mr-4 border border-gold-500">
-                                    <i className="fas fa-envelope text-gold-500"></i>
+                                    <FontAwesomeIcon icon={faEnvelope} className="text-gold-500 h-4 w-4" />
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-white mb-1">Email</h4>
@@ -369,7 +383,7 @@ export const ContactSection = () => {
 
                             <div className="flex items-start">
                                 <div className="bg-gray-700 p-3 rounded-full mr-4 border border-gold-500">
-                                    <i className="fas fa-clock text-gold-500"></i>
+                                    <FontAwesomeIcon icon={faClock} className="text-gold-500 h-4 w-4" />
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-white mb-1">Jam Kerja Notaris Tegal</h4>
@@ -513,18 +527,22 @@ export const WhattsappButton = () => {
         <>
             <button
                 onClick={showModal}
-                className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all z-50"
+                className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all z-50 flex items-center justify-center"
             >
-                <i className="fab fa-whatsapp text-2xl"></i>
+                <FontAwesomeIcon icon={faWhatsapp} className="text-2xl" />
             </button>
 
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-gray-800 rounded-lg p-6 w-full max-w-md border border-gold-500">
-                        <h2 className="text-xl font-bold text-white mb-4">Hubungi Kami via WhatsApp</h2>
+                        <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                            <FontAwesomeIcon icon={faWhatsapp} className="text-green-500" />
+                            Hubungi Kami via WhatsApp
+                        </h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
-                                <label className="block text-gray-300 mb-2" htmlFor="visit-name">
+                                <label className="block text-gray-300 mb-2 flex items-center gap-2" htmlFor="visit-name">
+                                    <FontAwesomeIcon icon={faUser} className="h-4 w-4" />
                                     Nama Lengkap
                                 </label>
                                 <input
@@ -536,7 +554,8 @@ export const WhattsappButton = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-300 mb-2" htmlFor="visit-phone">
+                                <label className="block text-gray-300 mb-2 flex items-center gap-2" htmlFor="visit-phone">
+                                    <FontAwesomeIcon icon={faPhoneAlt} className="h-4 w-4" />
                                     Nomor WhatsApp
                                 </label>
                                 <input
@@ -548,7 +567,8 @@ export const WhattsappButton = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-300 mb-2" htmlFor="visit-date">
+                                <label className="block text-gray-300 mb-2 flex items-center gap-2" htmlFor="visit-date">
+                                    <FontAwesomeIcon icon={faCalendar} className="h-4 w-4" />
                                     Tanggal Kunjungan
                                 </label>
                                 <input
@@ -560,7 +580,8 @@ export const WhattsappButton = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-300 mb-2" htmlFor="visit-time">
+                                <label className="block text-gray-300 mb-2 flex items-center gap-2" htmlFor="visit-time">
+                                    <FontAwesomeIcon icon={faClock} className="h-4 w-4" />
                                     Waktu Kunjungan (08:00 - 17:00)
                                 </label>
                                 <input
@@ -575,7 +596,8 @@ export const WhattsappButton = () => {
                                 {timeError && <p className="text-red-400 text-sm mt-1">{timeError}</p>}
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-300 mb-2" htmlFor="visit-purpose">
+                                <label className="block text-gray-300 mb-2 flex items-center gap-2" htmlFor="visit-purpose">
+                                    <FontAwesomeIcon icon={faComments} className="h-4 w-4" />
                                     Tujuan Kunjungan
                                 </label>
                                 <select
@@ -594,7 +616,8 @@ export const WhattsappButton = () => {
                             </div>
                             {showOtherPurpose && (
                                 <div className="mb-4">
-                                    <label className="block text-gray-300 mb-2" htmlFor="other-purpose">
+                                    <label className="block text-gray-300 mb-2 flex items-center gap-2" htmlFor="other-purpose">
+                                        <FontAwesomeIcon icon={faQuestionCircle} className="h-4 w-4" />
                                         Tujuan Lainnya
                                     </label>
                                     <input
@@ -609,14 +632,15 @@ export const WhattsappButton = () => {
                                 <button
                                     type="button"
                                     onClick={hideModal}
-                                    className="px-4 py-2 text-gray-300 hover:text-white"
+                                    className="px-4 py-2 text-gray-300 hover:text-white flex items-center gap-2"
                                 >
                                     Batal
                                 </button>
                                 <button
                                     type="submit"
-                                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 flex items-center gap-2"
                                 >
+                                    <FontAwesomeIcon icon={faWhatsapp} />
                                     Kirim
                                 </button>
                             </div>

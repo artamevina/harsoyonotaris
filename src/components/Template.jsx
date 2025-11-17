@@ -1,3 +1,22 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faCheckCircle,
+    faCheck,
+    faCircle,
+    faCalendarAlt,
+    faEye,
+    faBullseye,
+    faScaleBalanced,
+    faTasks,
+    faGavel,
+    faLandmark,
+    faListCheck,
+    faUserTie,
+    faFileContract,
+    faBalanceScale,
+    faHandshake
+} from '@fortawesome/free-solid-svg-icons'
+
 export const SectionHeader = ({ title, description, darkMode = false }) => (
     <div className="text-center mb-16" data-aos="fade-up">
         <h2 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'} mb-4`}>{title}</h2>
@@ -30,7 +49,10 @@ export const LegalSection = ({ title, icon, items, iconColor, animation, darkMod
         data-aos={animation}
     >
         <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'} mb-4 flex items-center`}>
-            <div className={`fas ${icon} ${darkMode ? 'text-gold-500' : 'text-blue-600'} mr-3 text-xl`}></div>
+            <FontAwesomeIcon
+                icon={getIconFromString(icon)}
+                className={`${darkMode ? 'text-gold-500' : 'text-blue-600'} mr-3 text-xl`}
+            />
             {title}
         </h3>
         {description && <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-4`}>{description}</p>}
@@ -39,7 +61,7 @@ export const LegalSection = ({ title, icon, items, iconColor, animation, darkMod
                 <ListItem
                     key={item}
                     text={item}
-                    icon="fa-check-circle"
+                    icon={faCheckCircle}
                     iconColor={iconColor || (darkMode ? 'text-gold-500' : 'text-blue-600')}
                     darkMode={darkMode}
                 />
@@ -48,13 +70,13 @@ export const LegalSection = ({ title, icon, items, iconColor, animation, darkMod
     </div>
 );
 
-export const AuthoritySection = ({ title, icon, categories, darkMode = false }) => (
+export const AuthoritySection = ({ title, iconComponent, categories, darkMode = false }) => (
     <div
         className={`${darkMode ? 'bg-gray-800 border-gold-500' : 'bg-gray-50 border-blue-600'} border-l-4 p-6 rounded-lg mb-6`}
         data-aos="fade-up"
     >
         <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'} mb-4 flex items-center`}>
-            <div className={`fas ${icon} ${darkMode ? 'text-gold-500' : 'text-blue-600'} mr-3 text-xl`}></div>
+            {iconComponent}
             {title}
         </h3>
         <div className="grid md:grid-cols-2 gap-6">
@@ -66,7 +88,7 @@ export const AuthoritySection = ({ title, icon, categories, darkMode = false }) 
                             <ListItem
                                 key={item}
                                 text={item}
-                                icon={category.icon || "fa-check"}
+                                icon={getIconFromString(category.icon) || faCheck}
                                 iconColor={category.iconColor || (darkMode ? 'text-gold-500' : 'text-blue-600')}
                                 smallIcon
                                 darkMode={darkMode}
@@ -81,7 +103,10 @@ export const AuthoritySection = ({ title, icon, categories, darkMode = false }) 
 
 const ListItem = ({ text, icon, iconColor, smallIcon = false, darkMode = false }) => (
     <li className="flex items-start">
-        <div className={`fas ${icon} ${smallIcon ? 'text-xs mt-1' : 'text-sm mt-1'} ${iconColor} mr-3`}></div>
+        <FontAwesomeIcon
+            icon={icon}
+            className={`${smallIcon ? 'text-xs mt-1' : 'text-sm mt-1'} ${iconColor} mr-3`}
+        />
         <span className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{text}</span>
     </li>
 );
@@ -114,14 +139,20 @@ export const ServiceCard = ({ title, icon, color, description, items, animationD
             data-aos-delay={animationDelay}
         >
             <div className={`${selectedColor.bg} w-14 h-14 rounded-full flex items-center justify-center mb-6`}>
-                <div className={`fas ${icon} ${selectedColor.text} text-2xl`}></div>
+                <FontAwesomeIcon
+                    icon={getIconFromString(icon)}
+                    className={`${selectedColor.text} text-2xl`}
+                />
             </div>
             <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'} mb-3`}>{title}</h3>
             <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-4`}>{description}</p>
             <ul className="space-y-2">
                 {items.map((item) => (
                     <li key={item} className="flex items-center">
-                        <div className={`fas fa-check-circle ${selectedColor.iconColor} mr-2`}></div>
+                        <FontAwesomeIcon
+                            icon={faCheckCircle}
+                            className={`${selectedColor.iconColor} mr-2`}
+                        />
                         <span className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{item}</span>
                     </li>
                 ))}
@@ -193,7 +224,10 @@ export const SkillsSection = ({ skills, darkMode = false }) => {
                 {skills.map((skill) => (
                     <div key={skill.title} className="flex items-start">
                         <div className={`${colorClasses[skill.color]?.bg || colorClasses.gold.bg} p-2 rounded-full mr-3 mt-1`}>
-                            <i className={`fas ${skill.icon} ${colorClasses[skill.color]?.text || colorClasses.gold.text}`}></i>
+                            <FontAwesomeIcon
+                                icon={getIconFromString(skill.icon)}
+                                className={`${colorClasses[skill.color]?.text || colorClasses.gold.text}`}
+                            />
                         </div>
                         <div>
                             <h5 className={`font-medium ${darkMode ? 'text-white' : 'text-gray-800'}`}>{skill.title}</h5>
@@ -252,7 +286,10 @@ export const TrainingCard = ({ title, description, year, icon, color, darkMode =
         <div className={`${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'} p-6 rounded-lg shadow-md border hover:shadow-lg transition-all`}>
             <div className="flex items-start mb-3">
                 <div className={`${colorClasses[color]?.bg || colorClasses.gold.bg} p-3 rounded-full mr-4 flex-shrink-0`}>
-                    <i className={`fas ${icon} ${colorClasses[color]?.text || colorClasses.gold.text} text-lg`}></i>
+                    <FontAwesomeIcon
+                        icon={getIconFromString(icon)}
+                        className={`${colorClasses[color]?.text || colorClasses.gold.text} text-lg`}
+                    />
                 </div>
                 <div>
                     <h4 className={`font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{title}</h4>
@@ -285,7 +322,7 @@ export const OrganizationCard = ({ name, icon, color, description, period, role,
             <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'} mb-3`}>{name}</h3>
             <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-4`}>{description}</p>
             <div className="flex items-center text-sm text-gray-400">
-                <i className="fas fa-calendar-alt mr-2"></i>
+                <FontAwesomeIcon icon={faCalendarAlt} className="mr-2" />
                 <span>{period}</span>
             </div>
             <div className="mt-3">
@@ -326,7 +363,7 @@ const BankLogo = ({ name, imageUrl, darkMode = false }) => (
     </div>
 );
 
-export const VisionCard = ({ title, icon, content, quote, color, animation, darkMode = false }) => {
+export const VisionCard = ({ title, iconComponent, content, quote, color, animation, darkMode = false }) => {
     const colorClasses = {
         blue: { bg: darkMode ? "bg-blue-900/30" : "bg-blue-100", text: darkMode ? "text-blue-400" : "text-blue-600" },
         green: { bg: darkMode ? "bg-green-900/30" : "bg-green-100", text: darkMode ? "text-green-400" : "text-green-600" },
@@ -341,7 +378,7 @@ export const VisionCard = ({ title, icon, content, quote, color, animation, dark
         >
             <div className="flex items-center mb-6">
                 <div className={`${colorClasses[color]?.bg || colorClasses.gold.bg} p-3 rounded-full mr-4 border ${darkMode ? 'border-gold-500' : 'border-gray-300'}`}>
-                    <i className={`${icon} ${colorClasses[color]?.text || colorClasses.gold.text} text-2xl`}></i>
+                    {iconComponent}
                 </div>
                 <h3 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{title}</h3>
             </div>
@@ -353,7 +390,7 @@ export const VisionCard = ({ title, icon, content, quote, color, animation, dark
     );
 };
 
-export const MissionCard = ({ title, icon, items, color, animation, darkMode = false }) => {
+export const MissionCard = ({ title, iconComponent, items, color, animation, darkMode = false }) => {
     const colorClasses = {
         blue: { bg: darkMode ? "bg-blue-900/30" : "bg-blue-100", text: darkMode ? "text-blue-400" : "text-blue-600" },
         green: { bg: darkMode ? "bg-green-900/30" : "bg-green-100", text: darkMode ? "text-green-400" : "text-green-600" },
@@ -368,14 +405,17 @@ export const MissionCard = ({ title, icon, items, color, animation, darkMode = f
         >
             <div className="flex items-center mb-6">
                 <div className={`${colorClasses[color]?.bg || colorClasses.gold.bg} p-3 rounded-full mr-4 border ${darkMode ? 'border-gold-500' : 'border-gray-300'}`}>
-                    <i className={`${icon} ${colorClasses[color]?.text || colorClasses.gold.text} text-2xl`}></i>
+                    {iconComponent}
                 </div>
                 <h3 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{title}</h3>
             </div>
             <ul className="space-y-4">
                 {items.map((item, index) => (
                     <li key={index} className="flex items-start">
-                        <i className={`fas fa-check-circle ${colorClasses[color]?.text || colorClasses.gold.text} mt-1 mr-3`}></i>
+                        <FontAwesomeIcon
+                            icon={faCheckCircle}
+                            className={`${colorClasses[color]?.text || colorClasses.gold.text} mt-1 mr-3`}
+                        />
                         <span className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{item}</span>
                     </li>
                 ))}
@@ -391,3 +431,24 @@ export const Loading = () => {
         </div>
     )
 }
+
+const getIconFromString = (iconString) => {
+    const iconMap = {
+        'fa-scale-balanced': faScaleBalanced,
+        'fa-tasks': faTasks,
+        'fa-gavel': faGavel,
+        'fa-landmark': faLandmark,
+        'fa-list-check': faListCheck,
+        'fa-user-tie': faUserTie,
+        'fa-file-contract': faFileContract,
+        'fa-balance-scale': faBalanceScale,
+        'fa-handshake': faHandshake,
+        'fa-eye': faEye,
+        'fa-bullseye': faBullseye,
+        'fa-circle': faCircle,
+        'fa-check': faCheck,
+        'fa-check-circle': faCheckCircle
+    };
+
+    return iconMap[iconString] || faCheckCircle;
+};

@@ -1,11 +1,11 @@
 export const uploadImageToCloudinary = async (file) => {
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('upload_preset', 'portofolio-notaris') // Replace with your upload preset
+    formData.append('upload_preset', 'portofolio-notaris')
 
     try {
         const response = await fetch(
-            'https://api.cloudinary.com/v1_1/du4wegspv/image/upload', // Replace namaakun with your cloud name
+            'https://api.cloudinary.com/v1_1/du4wegspv/image/upload',
             {
                 method: 'POST',
                 body: formData
